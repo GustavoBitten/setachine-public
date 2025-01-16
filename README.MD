@@ -8,10 +8,11 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install git
 New-Item -ItemType Directory prj-personal
 git clone https://github.com/GustavoBitten/setachine-public.git prj-personal/setachine-public
-first_run_windows.ps1
+.\prj-personal\setachine-public\first_run_windows.ps1
 ```
 
 ## Install Linux
+
 ```
 sudo apt install git
 mkdir prj-personal
