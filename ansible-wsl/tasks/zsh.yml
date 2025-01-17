@@ -1,0 +1,13 @@
+- name: Install Oh My Zsh
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    exit 0
+  args:
+    executable: /bin/bash
+  environment:
+    RUNZSH: "no"
+
+- name: Set Zsh as the default shell
+  shell: chsh -s $(which zsh) "{{ ansible_user }}"
+  args:
+    executable: /bin/bash

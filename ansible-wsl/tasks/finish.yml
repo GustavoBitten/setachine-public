@@ -1,0 +1,4 @@
+- name: Clean up
+  apt:
+    autoclean: yes
+    autoremove: yes

@@ -1,0 +1,16 @@
+---
+- name: Setup WSL Environment
+  hosts: wsl
+  become: true
+
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+    - include_tasks: tasks/setup.yml
+    - include_tasks: tasks/docker.yml
+    - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/node.yml
+
+  # handlers:
+  #   - include_tasks: handlers/restart.yml
