@@ -18,6 +18,7 @@ sudo apt install git
 mkdir prj-personal
 cd prj-personal
 git clone https://github.com/GustavoBitten/setachine-public.git
+git pull
 cd setachine-public
 chmod +x first_run_linux.sh
 ./first_run_linux.sh
