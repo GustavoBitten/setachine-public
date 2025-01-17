@@ -55,6 +55,17 @@ fi
 
 spacer
 
+# Configure Git pull behavior
+if [ "$(git config --global pull.rebase)" != "false" ]; then
+    echo "Setting Git pull behavior to merge..."
+    git config --global pull.rebase false
+    echo "Git pull behavior is now configured to merge"
+else
+    echo "Git pull behavior is already configured to merge"
+fi
+
+spacer
+
 
 # Install GitHub CLI if not already installed
 if ! which gh > /dev/null 2>&1; then
