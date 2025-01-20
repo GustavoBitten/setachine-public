@@ -20,6 +20,17 @@ spacer
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
     RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "Oh My Zsh installation completed"
+    echo "Installing Spaceship Zsh theme..."
+    git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    echo "Spaceship Zsh theme installation completed"
+
+    echo "Installing Zsh plugins..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+
 else
     echo "Oh My Zsh is already installed"
 fi
@@ -31,6 +42,7 @@ if [ "$SHELL" != "$(which zsh)" ]; then
 else
     echo "Zsh is already the default shell"
 fi
+
 
 
 
@@ -160,3 +172,30 @@ fi
 
 spacer
 
+
+
+# Clone private repository if not already cloned
+if [ ! -d "$HOME/.git" ]; then
+    echo "Cloning private repository..."
+    cd $HOME
+    git init
+    git remote add origin git@github.com:GustavoBitten/setachine-private.git
+    git pull
+    git checkout main -f
+    git branch --set-upstream-to origin/main
+else
+    echo "Repository already cloned"
+fi
+
+spacer
+
+# Create project directory if it doesn't exist
+if [ ! -d "$HOME/prj-vallourec" ]; then
+    echo "Creating project directory..."
+    mkdir -p "$HOME/prj-vallourec"
+    echo "Project directory created at $HOME/prj-vallourec"
+else
+    echo "Project directory already exists"
+fi
+
+spacer
